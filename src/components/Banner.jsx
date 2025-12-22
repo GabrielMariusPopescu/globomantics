@@ -7,14 +7,14 @@ const subtitleStyle = {
     color: "coral"
 };
 
-const Banner = () => {
+const Banner = (props) => {
     return (
         <header className="row">
             <div className="col-5 mb-4">
                 <img src={logo} className={styles.logo} alt="logo" />
             </div>
             <div className="col-7 mt-5" style={subtitleStyle}>
-                Providing houses all over the world.</div>
+                {props.headerText}</div>
         </header>
     );
 }
