@@ -1,38 +1,28 @@
-import {useState} from "react";
 import HouseRow from "./HouseRow";
-
-const houseArray = [
-  {
-    id: 1,
-    address: "123 Main St, Dallas, Texas",
-    country: "USA",
-    price: "300000"
-  },
-  {
-    id: 2,
-    address: "456 High St, Toronto, Ontario",
-    country: "Canada",
-    price: "400000"
-  },
-  {
-    id: 3,
-    address: "789 Elm St, Belfast, Northern Ireland",
-    country: "UK",
-    price: "250000"
-  }
-];
+import {useEffect, useState} from "react";
 
 const HouseList = () => {
-    const [houses, setHouses] = useState(houseArray);
+    const [houses, setHouses] = useState([]);
+
+    useEffect(() => {
+      const fetchHouses = async () => {
+        const response = await fetch("https://localhost:4000/api/houses");
+        const data = await response.json();
+        setHouses(data);
+      };
+      fetchHouses();
+    }, []);
 
     const addHouse = () => {
         setHouses([
             ...houses,
             {
-                id: 4,
+                id: 6,
                 address: "1010 Maple St, Vancouver, British Columbia",
                 country: "Canada",
-                price: "500000"
+                description: "A charming 3-bedroom house with a beautiful garden.",
+                price: "500000",
+                photo: "125699"
             }
         ]);
     }
@@ -48,12 +38,14 @@ const HouseList = () => {
             <tr>
                 <th>Address</th>
                 <th>Country</th>
+                <th>Description</th>
                 <th>Price</th>
+                <th>Image</th>
             </tr>
         </thead>
         <tbody>
             {houses.map((house) => (
-               <HouseRow 
+               <HouseRow
                 house={house} 
                 key={house.id} />
             ))}
