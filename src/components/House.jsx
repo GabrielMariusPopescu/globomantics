@@ -1,15 +1,15 @@
-import currencyFormatter from '../utils/currencyFormatter';
+import currencyFormatter from '../helpers/currencyFormatter';
 
 const House = ({house}) => {
   return(
     <div className="row">
-        <div className="row-6">
+        <div className="col-6">
             <div className="row">
                 <img className="image-fluid"
-                src={house.image 
-                    ? `./houseImages/${house.image}.jpg` 
+                src={house.photo 
+                    ? `./houseImages/${house.photo}.jpeg` 
                     : "./defaultImage.png"} 
-                    alt="house image" />
+                    alt="house photo" />
             </div>
         </div>
         <div className="col-6">
