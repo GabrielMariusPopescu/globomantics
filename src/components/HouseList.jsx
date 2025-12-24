@@ -38,9 +38,7 @@ const HouseList = () => {
             <tr>
                 <th>Address</th>
                 <th>Country</th>
-                <th>Description</th>
                 <th>Price</th>
-                <th>Image</th>
             </tr>
         </thead>
         <tbody>

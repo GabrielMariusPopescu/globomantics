@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Banner headerText="Providing houses all over the world." />
-      <HouseList />
+        <HouseList />
     </>
   )
 }
