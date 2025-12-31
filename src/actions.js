@@ -10,7 +10,7 @@ const addHouse = async () => {
     price: 1000000,
   };
   
-  await fetch("https://localhost:4001/api/houses", {
+  await fetch("https://localhost:4000/house", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -23,7 +23,7 @@ const addHouse = async () => {
 };
 
 const postBid = async (bid) => {
-  const rsp = await fetch("http://localhost:4001/bid", {
+  const rsp = await fetch("https://localhost:4000/bid", {
     method: "POST",
     headers: {
       Accept: "application/json",

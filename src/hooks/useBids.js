@@ -1,4 +1,4 @@
-import { useEffect, useOptimistic, useState } from "react";
+import { useEffect, useState } from "react";
 import loadingStatus from "../helpers/loadingStatus";
 
 const useBids = (houseId) => {
@@ -11,7 +11,7 @@ const useBids = (houseId) => {
       setLoadingState(loadingStatus.isLoading);
       try {
         const response =
-          await fetch(`https://localhost:4000/api/bids/${houseId}`);
+          await fetch(`https://localhost:4000/bid/${houseId}`);
         const bids = await response.json();
         setBids(bids);
         setLoadingState(loadingStatus.loaded);
@@ -23,7 +23,7 @@ const useBids = (houseId) => {
   }, [houseId]);
 
   const postBid = async (bid) => {
-    const rsp = await fetch("https://localhost:4000/api/bids", {
+    const rsp = await fetch("https://localhost:4000/bid", {
       method: "POST",
       headers: {
         Accept: "application/json",

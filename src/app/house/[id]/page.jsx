@@ -5,9 +5,9 @@ import { Suspense } from "react";
 
 const House = async ({ params }) => {
   const { id } = await params;
-  const bidsPromise = fetch(`https://localhost:4001/api/bids/${id}`)
+  const bidsPromise = fetch(`https://localhost:4000/bid/${id}`)
     .then((r) => r.json());
-  const house = await fetch(`https://localhost:4001/api/houses/${id}`)
+  const house = await fetch(`https://localhost:4000/house/${id}`)
     .then(r => r.json());
 
   return (

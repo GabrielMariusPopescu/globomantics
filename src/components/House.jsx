@@ -1,10 +1,20 @@
 import { useLocation } from "react-router";
 import currencyFormatter from "../helpers/currencyFormatter";
-import Bids from "./bids";
+import BidList from "./BidList";
+import LoadingIndicator from "./LoadingIndicator";
+import useBids from "../hooks/useBids";
+import loadingStatus from "../helpers/loadingStatus";
+import AddBid from "./AddBid";
 
 const House = () => {
   const location = useLocation();
   const { house } = location.state;
+
+  const { bids, loadingState, addBid } = useBids(house.id);
+
+  if (loadingState != loadingStatus.loaded)
+    return <LoadingIndicator loadingState={loadingState} />
+
   return (
     <>
       <div className="row">
@@ -15,7 +25,7 @@ const House = () => {
               src={
                 house.photo
                   ? `./houseImages/${house.photo}.jpeg`
-                  : "./defaultPhoto.png"
+                  : "./defaultphoto.png"
               }
               alt="House pic"
             />
@@ -36,7 +46,8 @@ const House = () => {
           <div className="row">
             <div className="col-12 mt-3">{house.description}</div>
           </div>
-          <Bids house={house} />
+          <BidList bids={bids} />
+          <AddBid house={house} addBid={addBid} />
         </div>
       </div>
     </>

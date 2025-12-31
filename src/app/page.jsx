@@ -3,7 +3,7 @@ import HouseRow from "./components/HouseRow";
 import AddHouseButton from "./components/AddHouseButton";
 
 export default async function Home() {
-  const houses = await fetch("https://localhost:4001/api/houses")
+  const houses = await fetch("https://localhost:4000/house")
     .then(r => r.json());
 
   return (
